@@ -31,6 +31,12 @@ export default function Contact() {
       return;
     }
 
+    if (!supabase) {
+      setStatus('error');
+      setErrorMsg('O formulário está temporariamente indisponível. Fale com a gente pelo WhatsApp ou por e-mail.');
+      return;
+    }
+
     const { error } = await supabase.from('leads').insert({
       name,
       email,
