@@ -2,11 +2,10 @@ export const SITE = {
   brand: 'NexoraLab AI',
   slogan: 'Vídeos inteligentes para comunicar, treinar e vender.',
   // Número de WhatsApp no formato internacional, sem + ou espaços.
-  // Substitua pelo número real da empresa quando disponível.
-  whatsappNumber: '5511999999999',
+  whatsappNumber: '5547988695218',
   whatsappMessage:
     'Olá! Vim pelo site da NexoraLab AI e gostaria de solicitar uma proposta para produção de vídeos com IA.',
-  email: 'contato@nexoralab.ai',
+  email: 'contato@neroxalab.ai',
 };
 
 export const whatsappLink = `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(
