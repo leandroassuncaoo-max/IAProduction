@@ -5,7 +5,7 @@ export const SITE = {
   whatsappNumber: '5547988695218',
   whatsappMessage:
     'Olá! Vim pelo site da NexoraLab AI e gostaria de solicitar uma proposta para produção de vídeos com IA.',
-  email: 'contato@neroxalab.ai',
+  email: 'contato@nexoralab.ai',
 };
 
 export const whatsappLink = `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(
