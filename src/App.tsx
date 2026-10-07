@@ -16,6 +16,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-ink-950">
+      <div className="film-grain" aria-hidden="true" />
       <Header />
       <main>
         <Hero />

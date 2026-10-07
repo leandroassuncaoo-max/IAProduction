@@ -4,40 +4,32 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Pretos quentes de sala de edição.
         ink: {
-          950: '#070b14',
-          900: '#0a0f1c',
-          800: '#0e1424',
-          700: '#141c30',
-          600: '#1b2540',
-          500: '#243056',
+          950: '#09090a',
+          900: '#0e0e10',
+          800: '#141416',
+          700: '#1b1b1e',
+          600: '#252528',
+          500: '#38383d',
         },
-        electric: {
-          50: '#eef4ff',
-          100: '#d9e6ff',
-          200: '#bcd3ff',
-          300: '#8eb6ff',
-          400: '#598dff',
-          500: '#3366ff',
-          600: '#1f48f5',
-          700: '#1736e0',
-          800: '#192eb4',
-          900: '#1a2d8f',
+        // Branco "papel" — texto principal e o card em destaque.
+        paper: {
+          DEFAULT: '#f3efe6',
+          muted: '#d9d4c9',
         },
-        violet: {
-          400: '#a479ff',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
+        // O vermelho do REC: único acento da marca.
+        rec: {
+          200: '#ffc9bd',
+          300: '#ff9f8a',
+          400: '#ff6a4d',
+          500: '#ff4d2e',
+          600: '#e63a1c',
+          700: '#b82c13',
         },
         success: {
           400: '#34d399',
           500: '#10b981',
-          600: '#059669',
-        },
-        warning: {
-          400: '#fbbf24',
-          500: '#f59e0b',
         },
         error: {
           400: '#f87171',
@@ -46,44 +38,32 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
-      },
-      backgroundImage: {
-        'grid-faint':
-          'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)',
-        'radial-glow':
-          'radial-gradient(circle at 50% 0%, rgba(51,102,255,0.25), transparent 60%)',
-      },
-      backgroundSize: {
-        grid: '48px 48px',
+        display: ['"Inter Tight"', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       animation: {
-        'fade-up': 'fadeUp 0.7s ease-out both',
-        'fade-in': 'fadeIn 0.7s ease-out both',
-        float: 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulseSlow 4s ease-in-out infinite',
-        marquee: 'marquee 28s linear infinite',
+        float: 'float 7s ease-in-out infinite',
+        blink: 'blink 1.2s steps(2, start) infinite',
+        marquee: 'marquee 36s linear infinite',
+        playhead: 'playhead 9s linear infinite',
+        'spin-slow': 'spin 14s linear infinite',
       },
       keyframes: {
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(24px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
-        pulseSlow: {
-          '0%, 100%': { opacity: '0.6' },
-          '50%': { opacity: '1' },
+        blink: {
+          to: { visibility: 'hidden' },
         },
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        playhead: {
+          '0%': { left: '0%' },
+          '100%': { left: '100%' },
         },
       },
     },

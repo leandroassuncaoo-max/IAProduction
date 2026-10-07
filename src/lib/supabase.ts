@@ -17,7 +17,7 @@ export const supabase: SupabaseClient | null = isSupabaseConfigured
 
 if (!isSupabaseConfigured) {
   console.warn(
-    '[NexoraLab AI] VITE_SUPABASE_URL e/ou VITE_SUPABASE_ANON_KEY ausentes no build. ' +
+    '[Takeia] VITE_SUPABASE_URL e/ou VITE_SUPABASE_ANON_KEY ausentes no build. ' +
       'O formulário de contato ficará indisponível; o restante do site funciona normalmente.'
   );
 }

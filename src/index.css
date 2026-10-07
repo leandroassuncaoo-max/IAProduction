@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,13 +6,14 @@
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
   body {
-    @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    @apply bg-ink-950 font-sans text-stone-300 antialiased;
+    font-feature-settings: 'ss01', 'cv11';
   }
   ::selection {
-    @apply bg-electric-500/30 text-white;
+    @apply bg-rec-500 text-white;
   }
 }
 
@@ -23,59 +22,110 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
   .section-py {
-    @apply py-20 sm:py-24 lg:py-28;
+    @apply py-24 sm:py-28 lg:py-36;
   }
+
+  /* "● CENA 01 / SOLUÇÕES" — rótulo de claquete usado em cada seção. */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-electric-300;
+    @apply inline-flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400;
   }
+  .eyebrow-dot {
+    @apply h-1.5 w-1.5 rounded-full bg-rec-500;
+  }
+
   .heading-xl {
-    @apply font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl;
+    @apply font-display text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.035em] text-paper sm:text-6xl lg:text-[5.25rem];
   }
   .heading-lg {
-    @apply font-display text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[2.75rem];
+    @apply font-display text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.03em] text-paper sm:text-5xl lg:text-[3.5rem];
   }
-  .heading-md {
-    @apply font-display text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl;
+  /* Palavra em serifa itálica dentro dos títulos. */
+  .accent-serif {
+    @apply font-serif font-normal italic tracking-[-0.01em];
   }
   .body-lg {
-    @apply text-base leading-relaxed text-slate-300 sm:text-lg;
+    @apply text-base leading-relaxed text-stone-400 sm:text-lg;
   }
+
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-rec-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
   }
   .btn-primary {
-    @apply btn bg-electric-500 text-white shadow-[0_0_30px_-6px_rgba(51,102,255,0.6)] hover:bg-electric-400 hover:shadow-[0_0_40px_-4px_rgba(51,102,255,0.8)] active:scale-[0.98];
+    @apply btn bg-rec-500 text-white hover:bg-rec-400 active:scale-[0.98];
+  }
+  .btn-light {
+    @apply btn bg-paper text-ink-950 hover:bg-white active:scale-[0.98];
   }
   .btn-secondary {
-    @apply btn border border-white/15 bg-white/5 text-white backdrop-blur hover:border-white/30 hover:bg-white/10 active:scale-[0.98];
+    @apply btn border border-white/15 text-paper hover:border-white/40 hover:bg-white/5 active:scale-[0.98];
   }
-  .btn-ghost {
-    @apply btn text-slate-300 hover:text-white;
-  }
+
   .card {
-    @apply rounded-2xl border border-white/10 bg-ink-800/60 backdrop-blur;
+    @apply rounded-3xl border border-white/[0.08] bg-ink-900;
   }
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:border-electric-500/40 hover:bg-ink-700/60;
+    @apply transition-colors duration-300 hover:border-white/20 hover:bg-ink-800;
   }
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-stone-300;
   }
   .form-input {
-    @apply w-full rounded-xl border border-white/10 bg-ink-900/60 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-electric-500/50 focus:outline-none focus:ring-2 focus:ring-electric-500/20;
+    @apply w-full rounded-xl border border-white/10 bg-ink-950 px-4 py-3 text-sm text-paper placeholder-stone-600 transition-colors focus:border-rec-500/60 focus:outline-none focus:ring-4 focus:ring-rec-500/10;
   }
+
+  /* Marcas de enquadramento do visor da câmera, nos quatro cantos. */
+  .viewfinder {
+    @apply relative;
+  }
+  .viewfinder::before,
+  .viewfinder::after,
+  .viewfinder > .vf-b::before,
+  .viewfinder > .vf-b::after {
+    content: '';
+    @apply pointer-events-none absolute z-30 h-5 w-5 border-paper/70;
+  }
+  .viewfinder::before {
+    @apply left-3 top-3 border-l-2 border-t-2;
+  }
+  .viewfinder::after {
+    @apply right-3 top-3 border-r-2 border-t-2;
+  }
+  .viewfinder > .vf-b::before {
+    @apply bottom-3 left-3 border-b-2 border-l-2;
+  }
+  .viewfinder > .vf-b::after {
+    @apply bottom-3 right-3 border-b-2 border-r-2;
+  }
+}
+
+@layer utilities {
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Granulação de película sobre a página inteira. */
+.film-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Reveal-on-scroll */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  will-change: opacity, transform;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -88,8 +138,10 @@
     scroll-behavior: auto;
   }
   .animate-float,
-  .animate-pulse-slow,
-  .animate-marquee {
+  .animate-blink,
+  .animate-marquee,
+  .animate-playhead,
+  .animate-spin-slow {
     animation: none !important;
   }
 }

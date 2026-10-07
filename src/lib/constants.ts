@@ -1,10 +1,10 @@
 export const SITE = {
-  brand: 'NexoraLab AI',
+  brand: 'Takeia',
   slogan: 'Vídeos inteligentes para comunicar, treinar e vender.',
   // Número de WhatsApp no formato internacional, sem + ou espaços.
   whatsappNumber: '5547988695218',
   whatsappMessage:
-    'Olá! Vim pelo site da NexoraLab AI e gostaria de solicitar uma proposta para produção de vídeos com IA.',
+    'Olá! Vim pelo site da Takeia e gostaria de solicitar uma proposta para produção de vídeos com IA.',
   email: 'contato@nexoralab.ai',
 };
 
@@ -13,7 +13,7 @@ export const whatsappLink = `https://wa.me/${SITE.whatsappNumber}?text=${encodeU
 )}`;
 
 export const whatsappProposalLink = `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(
-  'Olá! Gostaria de solicitar um diagnóstico e proposta personalizada da NexoraLab AI.'
+  'Olá! Gostaria de solicitar um diagnóstico e proposta personalizada da Takeia.'
 )}`;
 
 export const NAV_LINKS = [
@@ -182,7 +182,7 @@ export const FAQ_ITEMS = [
   {
     question: 'O que é um vídeo piloto?',
     answer:
-      'É um primeiro vídeo produzido com IA para validar o formato, o tom e a identidade visual antes de contratar um pacote recorrente. Ideal para testar a qualidade da NexoraLab AI com baixo risco.',
+      'É um primeiro vídeo produzido com IA para validar o formato, o tom e a identidade visual antes de contratar um pacote recorrente. Ideal para testar a qualidade da Takeia com baixo risco.',
   },
   {
     question: 'Os avatares e narrações são em português?',

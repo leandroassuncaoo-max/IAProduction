@@ -1,0 +1,145 @@
+<!doctype html>
+<!--
+  Fonte da imagem de compartilhamento (public/og-image.jpg), 1200x630.
+  Para regenerar:
+  msedge --headless=new --user-data-dir=<pasta temporária> --hide-scrollbars --force-device-scale-factor=1
+    --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og-image.png scripts/og-image.html
+  e converter para public/og-image.jpg (qualidade ~88, para ficar abaixo de 300 KB por causa do WhatsApp).
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #09090a; }
+  body {
+    position: relative;
+    font-family: Inter, sans-serif;
+    color: #f3efe6;
+    background:
+      radial-gradient(620px 520px at 1040px -60px, rgba(255, 77, 46, 0.32), transparent 70%),
+      radial-gradient(500px 400px at 80px 640px, rgba(243, 239, 230, 0.05), transparent 70%),
+      #09090a;
+  }
+  /* granulação */
+  body::after {
+    content: ''; position: absolute; inset: 0; opacity: 0.06; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* marcas de enquadramento da peça inteira */
+  .corner { position: absolute; width: 34px; height: 34px; border-color: rgba(243,239,230,0.35); border-style: solid; border-width: 0; }
+  .tl { left: 28px; top: 28px; border-left-width: 2px; border-top-width: 2px; }
+  .tr { right: 28px; top: 28px; border-right-width: 2px; border-top-width: 2px; }
+  .bl { left: 28px; bottom: 28px; border-left-width: 2px; border-bottom-width: 2px; }
+  .br { right: 28px; bottom: 28px; border-right-width: 2px; border-bottom-width: 2px; }
+
+  .left { position: absolute; left: 76px; top: 74px; bottom: 74px; width: 700px; display: flex; flex-direction: column; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand svg { width: 46px; height: 46px; }
+  .wordmark { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 38px; letter-spacing: -0.04em; }
+  .wordmark span, .red { color: #ff4d2e; }
+  .chip {
+    margin-left: auto; margin-right: 40px;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #d6d3d1; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 8px 16px 8px 10px;
+  }
+  .chip b { font-weight: 500; color: #ff9f8a; background: rgba(255,77,46,0.16); border-radius: 999px; padding: 3px 10px; display: inline-flex; align-items: center; gap: 7px; }
+  .chip b i { width: 8px; height: 8px; border-radius: 50%; background: #ff4d2e; display: inline-block; }
+
+  h1 {
+    margin-top: auto;
+    font-family: 'Inter Tight', sans-serif; font-weight: 600;
+    font-size: 78px; line-height: 0.98; letter-spacing: -0.035em;
+  }
+  h1 em { font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; letter-spacing: -0.01em; color: #ff6a4d; }
+  .sub {
+    margin-top: 30px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; gap: 26px; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #a8a29e;
+  }
+  .sub i { width: 6px; height: 6px; border-radius: 50%; background: #ff4d2e; display: inline-block; }
+
+  /* visor 9:16 */
+  .vf {
+    position: absolute; right: 86px; top: 58px; width: 290px; height: 514px;
+    border-radius: 26px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12);
+    background: radial-gradient(110% 70% at 70% 15%, #3d2620 0%, #17171a 55%, #0b0b0c 100%);
+    box-shadow: 0 40px 120px -30px rgba(255,77,46,0.5);
+  }
+  .vf .glow { position: absolute; left: -70px; top: 90px; width: 240px; height: 240px; border-radius: 50%; background: rgba(255,77,46,0.22); filter: blur(50px); }
+  .vf .m { position: absolute; width: 18px; height: 18px; border-color: rgba(243,239,230,0.75); border-style: solid; border-width: 0; z-index: 3; }
+  .vf .m1 { left: 12px; top: 12px; border-left-width: 2px; border-top-width: 2px; }
+  .vf .m2 { right: 12px; top: 12px; border-right-width: 2px; border-top-width: 2px; }
+  .vf .m3 { left: 12px; bottom: 12px; border-left-width: 2px; border-bottom-width: 2px; }
+  .vf .m4 { right: 12px; bottom: 12px; border-right-width: 2px; border-bottom-width: 2px; }
+  .hud { position: absolute; left: 26px; right: 26px; top: 26px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(243,239,230,0.8); z-index: 3; }
+  .hud span:first-child::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ff4d2e; margin-right: 7px; vertical-align: 0; }
+  .hud .dim { color: rgba(243,239,230,0.55); }
+  .person { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; }
+  .head { width: 98px; height: 112px; border-radius: 46%; background: linear-gradient(135deg, #4a4a50, #2b2b2f 55%, #1a1a1d); box-shadow: inset -10px -6px 30px rgba(0,0,0,0.5), inset 8px 6px 20px rgba(255,120,90,0.2); }
+  .neck { margin-top: -2px; width: 46px; height: 26px; background: linear-gradient(#232326, #1b1b1e); }
+  .body { margin-top: -8px; width: 82%; height: 180px; border-radius: 48% 48% 0 0; background: linear-gradient(#2c2c30, #1c1c1f 60%, #0e0e10); box-shadow: inset 10px 8px 30px rgba(255,120,90,0.14); }
+  .caption {
+    position: absolute; left: 22px; right: 22px; bottom: 132px; z-index: 3; text-align: center;
+    font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.25; letter-spacing: -0.02em;
+    color: #f3efe6; text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  }
+  .caption .hl { background: #ff4d2e; color: #fff; border-radius: 4px; padding: 0 4px; }
+  .caption .off { color: rgba(243,239,230,0.4); }
+  .tl-wrap { position: absolute; left: 26px; right: 26px; bottom: 30px; z-index: 3; }
+  .wave { position: relative; display: flex; align-items: flex-end; gap: 3px; height: 34px; }
+  .wave span { flex: 1; border-radius: 99px; background: rgba(243,239,230,0.3); }
+  .wave .ph { position: absolute; top: -4px; bottom: -4px; left: 62%; width: 1.5px; background: #ff4d2e; box-shadow: 0 0 8px #ff4d2e; flex: none; border-radius: 0; }
+  .tl-meta { margin-top: 8px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(243,239,230,0.5); }
+  .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); z-index: 2; }
+</style>
+</head>
+<body>
+  <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+
+  <div class="left">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="9" fill="#f3efe6" />
+        <path d="M7 11V7h4M21 7h4v4M25 21v4h-4M11 25H7v-4" fill="none" stroke="#09090a" stroke-width="2" stroke-linecap="round" />
+        <circle cx="16" cy="16" r="5" fill="#ff4d2e" />
+      </svg>
+      <span class="wordmark">take<span>ia</span></span>
+      <span class="chip"><b><i></i>REC</b>Estúdio de vídeos com IA</span>
+    </div>
+
+    <h1>Do roteiro ao vídeo pronto, <em>em um só take.</em></h1>
+
+    <div class="sub">
+      <span>Redes sociais</span><i></i><span>LinkedIn</span><i></i><span>Treinamentos</span>
+    </div>
+  </div>
+
+  <div class="vf">
+    <div class="glow"></div>
+    <i class="m m1"></i><i class="m m2"></i><i class="m m3"></i><i class="m m4"></i>
+    <div class="hud"><span>REC 00:00:24:06</span><span class="dim">4K · 9:16</span></div>
+    <div class="person"><div class="head"></div><div class="neck"></div><div class="body"></div></div>
+    <div class="shade"></div>
+    <p class="caption">Com IA, seu <span class="hl">conteúdo</span> <span class="off">fica pronto mais rápido.</span></p>
+    <div class="tl-wrap">
+      <div class="wave" id="wave"><span class="ph"></span></div>
+      <div class="tl-meta"><span>TAKE 03</span><span>00:45</span></div>
+    </div>
+  </div>
+
+  <script>
+    // Mesma forma de onda determinística do site.
+    const wave = document.getElementById('wave');
+    for (let i = 0; i < 40; i++) {
+      const s = document.createElement('span');
+      s.style.height = Math.round(22 + 60 * Math.abs(Math.sin(i * 0.55) * Math.cos(i * 0.21))) + '%';
+      wave.insertBefore(s, wave.lastElementChild);
+    }
+  </script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import { Target, Lightbulb, Cpu, Users } from 'lucide-react';
+import SectionHeading from '@/components/SectionHeading';
 
 const VALUES = [
   {
@@ -29,58 +30,64 @@ const VALUES = [
 
 export default function About() {
   return (
-    <section id="sobre" className="section-py relative overflow-hidden">
-      <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-violet-600/15 blur-[120px]" />
+    <section id="sobre" className="section-py relative overflow-hidden bg-ink-900/50">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="container-px relative">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <div className="reveal">
-            <span className="eyebrow">Sobre a NexoraLab AI</span>
-            <h2 className="heading-lg mt-4">
-              Um estúdio criativo movido a Inteligência Artificial
-            </h2>
-            <p className="body-lg mt-5">
-              A NexoraLab AI nasce da união entre comunicação estratégica e tecnologia.
-              Produzimos vídeos com IA que ajudam empresas a comunicar melhor,
-              treinar equipes e vender mais — com agilidade e custo operacional
-              menor do que produções tradicionais.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-slate-400">
-              Atendemos pequenas e médias empresas, redes de franquias,
-              profissionais que querem fortalecer o LinkedIn e equipes de RH,
-              treinamento e marketing corporativo que precisam de conteúdo
-              recorrente com qualidade.
-            </p>
+        <SectionHeading
+          scene="05"
+          label="Sobre a Takeia"
+          title={
+            <>
+              Um estúdio criativo movido a <span className="accent-serif text-rec-400">Inteligência Artificial.</span>
+            </>
+          }
+        />
 
-            <div className="mt-8 overflow-hidden rounded-2xl border border-white/10">
-              <img
-                src="https://images.pexels.com/photos/30530407/pexels-photo-30530407.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                alt="Interface de Inteligência Artificial em tela escura"
-                loading="lazy"
-                className="h-56 w-full object-cover sm:h-64"
-              />
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
+          <div className="reveal">
+            {/* O nome, explicado como verbete */}
+            <div className="rounded-3xl border border-white/[0.08] bg-ink-950 p-7 sm:p-8">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="font-display text-4xl font-semibold tracking-[-0.04em] text-paper">
+                  take<span className="text-rec-500">ia</span>
+                </span>
+                <span className="font-mono text-xs text-stone-500">/tei·ki·a/ · s.f.</span>
+              </div>
+              <p className="mt-4 text-[15px] leading-relaxed text-stone-300">
+                De <em className="accent-serif text-lg text-paper">take</em>, a tomada de cada cena,
+                + <span className="font-semibold text-paper">IA</span>. Um estúdio onde a direção é
+                humana e a produção é acelerada por inteligência artificial.
+              </p>
             </div>
+
+            <p className="body-lg mt-8">
+              Nascemos da união entre comunicação estratégica e tecnologia. Produzimos vídeos com IA
+              que ajudam empresas a comunicar melhor, treinar equipes e vender mais — com agilidade e
+              custo operacional menor do que produções tradicionais.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-stone-500">
+              Atendemos pequenas e médias empresas, redes de franquias, profissionais que querem
+              fortalecer o LinkedIn e equipes de RH, treinamento e marketing corporativo que precisam
+              de conteúdo recorrente com qualidade.
+            </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <ul className="grid content-start gap-px overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2">
             {VALUES.map((value, i) => (
-              <div
+              <li
                 key={value.title}
-                className="reveal card card-hover p-6"
+                className="reveal bg-ink-900 p-7 transition-colors duration-300 hover:bg-ink-800"
                 style={{ transitionDelay: `${(i % 2) * 80}ms` }}
               >
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-electric-500/20 to-violet-600/20 text-electric-300 ring-1 ring-white/10">
-                  <value.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 font-display text-base font-bold text-white">
+                <value.icon className="h-5 w-5 text-rec-400" />
+                <h3 className="mt-8 font-display text-lg font-semibold tracking-tight text-paper">
                   {value.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">
-                  {value.description}
-                </p>
-              </div>
+                <p className="mt-2 text-sm leading-relaxed text-stone-400">{value.description}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

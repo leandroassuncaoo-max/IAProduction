@@ -1,31 +1,37 @@
-import { Instagram, Linkedin, Youtube, Facebook, Play, Clapperboard } from 'lucide-react';
+import { Instagram, Linkedin, Youtube, Facebook, Music2, GraduationCap, Building2 } from 'lucide-react';
 
 const CHANNELS = [
-  { icon: Instagram, label: 'Instagram' },
-  { icon: Play, label: 'TikTok' },
-  { icon: Facebook, label: 'Facebook' },
-  { icon: Youtube, label: 'YouTube Shorts' },
+  { icon: Instagram, label: 'Instagram Reels' },
+  { icon: Music2, label: 'TikTok' },
   { icon: Linkedin, label: 'LinkedIn' },
-  { icon: Clapperboard, label: 'Treinamentos' },
+  { icon: Youtube, label: 'YouTube Shorts' },
+  { icon: Facebook, label: 'Facebook' },
+  { icon: GraduationCap, label: 'Treinamentos' },
+  { icon: Building2, label: 'Comunicação interna' },
 ];
 
 export default function TrustBar() {
   return (
-    <section className="border-y border-white/5 bg-ink-900/50 py-8">
-      <div className="container-px">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-          Conteúdo estratégico para cada canal
+    <section aria-label="Canais atendidos" className="border-y border-white/[0.06] bg-ink-900/60 py-7">
+      <div className="flex items-center gap-8">
+        <p className="hidden shrink-0 pl-12 font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500 xl:block">
+          Formatos prontos para
         </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-12">
-          {CHANNELS.map(({ icon: Icon, label }) => (
-            <div
-              key={label}
-              className="flex items-center gap-2 text-slate-400 transition-colors hover:text-slate-200"
-            >
-              <Icon className="h-5 w-5" />
-              <span className="text-sm font-medium">{label}</span>
-            </div>
-          ))}
+        <div className="mask-fade-x relative flex-1 overflow-hidden">
+          {/* A lista vai duplicada para o loop do letreiro não ter emenda. */}
+          <ul className="flex w-max animate-marquee items-center hover:[animation-play-state:paused]">
+            {[...CHANNELS, ...CHANNELS].map(({ icon: Icon, label }, i) => (
+              <li
+                key={i}
+                aria-hidden={i >= CHANNELS.length}
+                className="flex items-center gap-3 px-8 font-display text-lg font-medium tracking-tight text-stone-400 sm:text-xl"
+              >
+                <Icon className="h-5 w-5 text-stone-500" />
+                {label}
+                <span className="ml-8 h-1 w-1 rounded-full bg-rec-500/70" />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

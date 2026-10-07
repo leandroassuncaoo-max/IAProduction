@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { FAQ_ITEMS } from '@/lib/constants';
+import SectionHeading from '@/components/SectionHeading';
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
@@ -8,41 +9,61 @@ export default function FAQ() {
   return (
     <section id="faq" className="section-py relative">
       <div className="container-px">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <div className="reveal">
-            <span className="eyebrow">Dúvidas frequentes</span>
-            <h2 className="heading-lg mt-4">Perguntas comuns antes de começar</h2>
-            <p className="body-lg mt-4">
-              Reunimos as perguntas mais frequentes para ajudar você a entender
-              como funciona a produção de vídeos com IA na NexoraLab AI.
-            </p>
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <SectionHeading
+              scene="06"
+              label="Dúvidas"
+              title={
+                <>
+                  Perguntas comuns antes do <span className="accent-serif">primeiro take.</span>
+                </>
+              }
+              intro="Reunimos as perguntas mais frequentes para ajudar você a entender como funciona a produção de vídeos com IA na Takeia."
+            />
           </div>
 
-          <div className="reveal divide-y divide-white/10 border-t border-white/10">
+          <div className="reveal border-t border-white/10">
             {FAQ_ITEMS.map((item, i) => {
               const isOpen = open === i;
+              const panelId = `faq-panel-${i}`;
               return (
-                <div key={item.question}>
+                <div key={item.question} className="border-b border-white/10">
                   <button
                     type="button"
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                    className="group flex w-full items-start gap-5 py-7 text-left"
                     aria-expanded={isOpen}
+                    aria-controls={panelId}
                   >
-                    <span className="font-display text-base font-semibold text-white sm:text-lg">
+                    <span className="mt-1.5 font-mono text-[11px] text-stone-600">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span
+                      className={`flex-1 font-display text-lg font-medium tracking-tight transition-colors sm:text-xl ${
+                        isOpen ? 'text-paper' : 'text-stone-300 group-hover:text-paper'
+                      }`}
+                    >
                       {item.question}
                     </span>
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-electric-300">
-                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                    <span
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
+                        isOpen
+                          ? 'rotate-45 border-rec-500 bg-rec-500 text-white'
+                          : 'border-white/15 text-stone-300 group-hover:border-white/40'
+                      }`}
+                    >
+                      <Plus className="h-4 w-4" />
                     </span>
                   </button>
                   <div
+                    id={panelId}
                     className={`grid transition-all duration-300 ${
                       isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-5 pr-12 text-sm leading-relaxed text-slate-400 sm:text-base">
+                      <p className="pb-7 pl-10 pr-14 text-[15px] leading-relaxed text-stone-400 sm:text-base">
                         {item.answer}
                       </p>
                     </div>

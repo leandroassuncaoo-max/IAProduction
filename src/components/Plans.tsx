@@ -1,69 +1,83 @@
-import { Check, Star } from 'lucide-react';
+import { Check, ArrowUpRight } from 'lucide-react';
 import { PLANS, whatsappProposalLink } from '@/lib/constants';
+import SectionHeading from '@/components/SectionHeading';
 
 export default function Plans() {
   return (
     <section id="planos" className="section-py relative overflow-hidden">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-electric-600/15 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-rec-500/[0.07] blur-[140px]" />
 
       <div className="container-px relative">
-        <div className="reveal mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Planos</span>
-          <h2 className="heading-lg mt-4">Escolha o ponto de partida ideal</h2>
-          <p className="body-lg mt-4">
-            Comece com um vídeo piloto ou contrate um pacote recorrente. Todos os
-            planos incluem roteiro estratégico, avatar de IA e legendas.
-          </p>
-        </div>
+        <SectionHeading
+          scene="04"
+          label="Planos"
+          align="center"
+          title={
+            <>
+              Escolha o ponto de <span className="accent-serif">partida</span> ideal.
+            </>
+          }
+          intro="Comece com um vídeo piloto ou contrate um pacote recorrente. Todos os planos incluem roteiro estratégico, avatar de IA e legendas."
+        />
 
-        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
-          {PLANS.map((plan, i) => (
-            <div
-              key={plan.name}
-              className={`reveal relative flex flex-col rounded-2xl border p-7 sm:p-8 ${
-                plan.highlight
-                  ? 'border-electric-500/50 bg-gradient-to-b from-electric-600/15 to-ink-800 shadow-[0_0_50px_-12px_rgba(51,102,255,0.5)]'
-                  : 'border-white/10 bg-ink-800/60'
-              }`}
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              {plan.highlight && (
-                <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-electric-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
-                  <Star className="h-3.5 w-3.5 fill-white" />
-                  Mais procurado
-                </span>
-              )}
-
-              <h3 className="font-display text-xl font-bold text-white">{plan.name}</h3>
-              <p className="mt-1.5 text-sm text-slate-400">{plan.description}</p>
-              <div className="mt-5 font-display text-2xl font-extrabold text-white">
-                {plan.price}
-              </div>
-
-              <ul className="mt-6 flex-1 space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-sm text-slate-300">
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-electric-500/15 text-electric-300">
-                      <Check className="h-3.5 w-3.5" />
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={whatsappProposalLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`mt-8 ${plan.highlight ? 'btn-primary' : 'btn-secondary'}`}
+        <div className="mt-16 grid items-stretch gap-4 lg:grid-cols-3">
+          {PLANS.map((plan, i) => {
+            const hi = plan.highlight;
+            return (
+              <div
+                key={plan.name}
+                className={`reveal relative flex flex-col rounded-3xl p-8 sm:p-10 ${
+                  hi
+                    ? 'bg-paper text-ink-950 shadow-[0_40px_100px_-30px_rgba(255,77,46,0.45)] lg:-my-4 lg:py-14'
+                    : 'border border-white/[0.08] bg-ink-900'
+                }`}
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
-                {plan.cta}
-              </a>
-            </div>
-          ))}
+                <div className="flex items-center justify-between">
+                  <span className={`font-mono text-[11px] uppercase tracking-[0.2em] ${hi ? 'text-ink-500' : 'text-stone-500'}`}>
+                    Plano {String(i + 1).padStart(2, '0')}
+                  </span>
+                  {hi && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-rec-500 px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-wider text-white">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                      Mais procurado
+                    </span>
+                  )}
+                </div>
+
+                <h3 className={`mt-6 font-display text-4xl font-semibold tracking-[-0.03em] ${hi ? 'text-ink-950' : 'text-paper'}`}>
+                  {plan.name}
+                </h3>
+                <p className={`mt-2 text-[15px] ${hi ? 'text-ink-600' : 'text-stone-400'}`}>{plan.description}</p>
+
+                <div className={`mt-8 border-t pt-6 ${hi ? 'border-ink-950/10' : 'border-white/[0.08]'}`}>
+                  <span className={`accent-serif text-3xl ${hi ? 'text-ink-950' : 'text-paper'}`}>{plan.price}</span>
+                </div>
+
+                <ul className="mt-6 flex-1 space-y-3.5">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className={`flex items-start gap-3 text-[15px] ${hi ? 'text-ink-700' : 'text-stone-300'}`}>
+                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${hi ? 'text-rec-600' : 'text-rec-400'}`} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={whatsappProposalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-10 ${hi ? 'btn bg-ink-950 text-paper hover:bg-ink-800' : 'btn-secondary'}`}
+                >
+                  {plan.cta}
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+            );
+          })}
         </div>
 
-        <p className="reveal mt-8 text-center text-sm text-slate-500">
+        <p className="reveal mt-12 text-center text-sm text-stone-500">
           Valores personalizados conforme volume e frequência. Diagnóstico gratuito e sem compromisso.
         </p>
       </div>

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Loader2, CheckCircle2, AlertCircle, MessageCircle, Mail } from 'lucide-react';
+import { Loader2, CheckCircle2, AlertCircle, MessageCircle, Mail, ArrowUpRight } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { whatsappLink, SITE, SERVICES } from '@/lib/constants';
 
@@ -59,73 +59,84 @@ export default function Contact() {
 
   return (
     <section id="contato" className="section-py relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-radial-glow opacity-60" />
-      <div className="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-violet-600/15 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-40 top-48 h-[560px] w-[560px] rounded-full bg-rec-500/[0.12] blur-[140px]" />
 
       <div className="container-px relative">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          {/* Left: copy + WhatsApp */}
-          <div className="reveal">
-            <span className="eyebrow">Contato</span>
-            <h2 className="heading-lg mt-4">Solicite seu diagnóstico gratuito</h2>
-            <p className="body-lg mt-4">
-              Conte sobre o seu projeto e receba uma proposta personalizada. Se
-              preferir, fale com a gente agora mesmo pelo WhatsApp.
+        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+          {/* Esquerda: chamada + canais diretos */}
+          <div className="reveal flex flex-col">
+            <span className="eyebrow">
+              <span className="eyebrow-dot animate-blink" />
+              Cena 07
+              <span className="text-stone-600">/</span>
+              Contato
+            </span>
+            <h2 className="heading-xl mt-6 text-balance">
+              Pronto para o <span className="accent-serif text-rec-400">primeiro take?</span>
+            </h2>
+            <p className="body-lg mt-6 max-w-lg">
+              Solicite seu diagnóstico gratuito: conte sobre o seu projeto e receba uma proposta
+              personalizada. Se preferir, fale com a gente agora mesmo pelo WhatsApp.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:mt-auto lg:pt-12">
               <a
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-ink-800/60 p-5 transition-colors hover:border-success-500/40 hover:bg-ink-700/60"
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 p-5 transition-colors hover:border-success-500/40 hover:bg-white/[0.03]"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-success-500/15 text-success-400">
-                  <MessageCircle className="h-6 w-6" />
+                <span className="flex items-center gap-3.5">
+                  <MessageCircle className="h-5 w-5 shrink-0 text-success-400" />
+                  <span>
+                    <span className="block font-semibold text-paper">WhatsApp</span>
+                    <span className="block text-xs text-stone-500">Resposta rápida em horário comercial</span>
+                  </span>
                 </span>
-                <div>
-                  <div className="font-display text-base font-bold text-white">WhatsApp</div>
-                  <div className="text-sm text-slate-400">Resposta rápida em horário comercial</div>
-                </div>
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-stone-500 transition-colors group-hover:text-paper" />
               </a>
 
               <a
                 href={`mailto:${SITE.email}`}
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-ink-800/60 p-5 transition-colors hover:border-electric-500/40 hover:bg-ink-700/60"
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 p-5 transition-colors hover:border-rec-500/40 hover:bg-white/[0.03]"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-electric-500/15 text-electric-300">
-                  <Mail className="h-6 w-6" />
+                <span className="flex min-w-0 items-center gap-3.5">
+                  <Mail className="h-5 w-5 shrink-0 text-rec-400" />
+                  <span className="min-w-0">
+                    <span className="block font-semibold text-paper">E-mail</span>
+                    <span className="block truncate text-xs text-stone-500">{SITE.email}</span>
+                  </span>
                 </span>
-                <div>
-                  <div className="font-display text-base font-bold text-white">E-mail</div>
-                  <div className="text-sm text-slate-400">{SITE.email}</div>
-                </div>
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-stone-500 transition-colors group-hover:text-paper" />
               </a>
             </div>
           </div>
 
-          {/* Right: form */}
-          <div className="reveal card p-6 sm:p-8">
+          {/* Direita: formulário */}
+          <div className="reveal rounded-3xl border border-white/10 bg-ink-900 p-6 sm:p-10">
             {status === 'success' ? (
               <div className="flex h-full flex-col items-center justify-center py-10 text-center">
                 <CheckCircle2 className="h-14 w-14 text-success-400" />
-                <h3 className="mt-4 font-display text-xl font-bold text-white">
+                <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight text-paper">
                   Recebemos seu contato!
                 </h3>
-                <p className="mt-2 max-w-sm text-sm text-slate-400">
+                <p className="mt-2 max-w-sm text-sm text-stone-400">
                   Obrigado pelo interesse. Nossa equipe entrará em contato em breve
                   com seu diagnóstico e proposta personalizada.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setStatus('idle')}
-                  className="btn-secondary mt-6"
-                >
+                <button type="button" onClick={() => setStatus('idle')} className="btn-secondary mt-6">
                   Enviar outra mensagem
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="mb-2 flex items-center justify-between border-b border-white/[0.08] pb-5">
+                  <h3 className="font-display text-xl font-semibold tracking-tight text-paper">
+                    Diagnóstico gratuito
+                  </h3>
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-stone-500">~2 min</span>
+                </div>
+
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field label="Nome*" htmlFor="name">
                     <input
@@ -201,23 +212,33 @@ export default function Contact() {
                 </Field>
 
                 {status === 'error' && (
-                  <div className="flex items-start gap-2.5 rounded-xl border border-error-500/30 bg-error-500/10 p-3 text-sm text-error-400">
+                  <div
+                    role="alert"
+                    className="flex items-start gap-2.5 rounded-xl border border-error-500/30 bg-error-500/10 p-3 text-sm text-error-400"
+                  >
                     <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
                     <span>{errorMsg}</span>
                   </div>
                 )}
 
-                <button type="submit" disabled={status === 'loading'} className="btn-primary w-full disabled:opacity-70">
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="btn-primary w-full py-4 disabled:opacity-70"
+                >
                   {status === 'loading' ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
                       Enviando...
                     </>
                   ) : (
-                    'Solicitar diagnóstico'
+                    <>
+                      Solicitar diagnóstico
+                      <ArrowUpRight className="h-4 w-4" />
+                    </>
                   )}
                 </button>
-                <p className="text-center text-xs text-slate-500">
+                <p className="text-center text-xs text-stone-500">
                   Resposta em até 1 dia útil. Seus dados estão seguros e não serão compartilhados.
                 </p>
               </form>
@@ -240,7 +261,10 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-slate-300">
+      <label
+        htmlFor={htmlFor}
+        className="mb-2 block font-mono text-[11px] uppercase tracking-wider text-stone-400"
+      >
         {label}
       </label>
       {children}
